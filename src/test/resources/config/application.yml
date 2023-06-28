@@ -23,9 +23,6 @@ eureka:
 spring:
   application:
     name: jhipsterSampleApplication
-  autoconfigure:
-    exclude:
-      - org.springframework.cloud.gateway.config.GatewayMetricsAutoConfiguration
   cloud:
     config:
       enabled: false
@@ -82,7 +79,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-        base64-secret: NWEzN2YyODYzNmVjNmE5ZjMyMDNiYWQ5ZmJiZjg1NzM0YmFkMWM2NmNiYjFlYTdmNzExM2M4MGEyMGFmY2Q5M2IyZWViODllMGYwZWZhNjY3OTA1YTc1N2JkMmVjY2I4MTM4YmU2OWMyZDUxY2Q1YmRjNWE2ZTZkMDE3YTlkNjM=
+        base64-secret: MjUxNDhkOTEwZjlhYmRmNWNhYjkwYjI2Njg0NTk1N2RhOTQ3MmYzMWZiMzM4MzljYjQ4MjQ2Yzg2NzgwNjdmMmZiMWU1NmY0ZWZmOWE2ZmNmNjIwMzEyY2UxYTgwNGRkNzE0NThhNzNlYjJhNDNiZDRjMDk0NmVjNWNjN2ZjYmY=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 86400

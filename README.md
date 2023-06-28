@@ -2,9 +2,6 @@
 
 This application was generated using JHipster 8.0.0-beta.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.0.0-beta.1](https://www.jhipster.tech/documentation-archive/v8.0.0-beta.1).
 
-This is a "gateway" application intended to be part of a microservice architecture, please refer to the [Doing microservices with JHipster][] page of the documentation for more information.
-This application is configured for Service Discovery and Configuration with the JHipster-Registry. On launch, it will refuse to start if it is not able to connect to the JHipster-Registry at [http://localhost:8761](http://localhost:8761). For more information, read our documentation on [Service Discovery and Configuration with the JHipster-Registry][].
-
 ## Project Structure
 
 Node is required for generation and recommended for development. `package.json` is always generated for a better development experience with prettier, commit hooks, scripts and so on.
@@ -245,7 +242,6 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 
 [JHipster Homepage and latest documentation]: https://www.jhipster.tech
 [JHipster 8.0.0-beta.1 archive]: https://www.jhipster.tech/documentation-archive/v8.0.0-beta.1
-[Doing microservices with JHipster]: https://www.jhipster.tech/documentation-archive/v8.0.0-beta.1/microservices-architecture/
 [Using JHipster in development]: https://www.jhipster.tech/documentation-archive/v8.0.0-beta.1/development/
 [Service Discovery and Configuration with the JHipster-Registry]: https://www.jhipster.tech/documentation-archive/v8.0.0-beta.1/microservices-architecture/#jhipster-registry
 [Using Docker and Docker-Compose]: https://www.jhipster.tech/documentation-archive/v8.0.0-beta.1/docker-compose

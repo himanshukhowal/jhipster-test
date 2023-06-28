@@ -1,24 +1,27 @@
 package com.mycompany.myapp.domain;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Objects;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.domain.Persistable;
-import org.springframework.data.relational.core.mapping.Table;
 
 /**
  * An authority (a security role) used by Spring Security.
  */
-@Table("jhi_authority")
-public class Authority implements Serializable, Persistable<String> {
+@Entity
+@Table(name = "jhi_authority")
+public class Authority implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @NotNull
     @Size(max = 50)
     @Id
+    @Column(length = 50)
     private String name;
 
     public String getName() {
@@ -51,15 +54,5 @@ public class Authority implements Serializable, Persistable<String> {
         return "Authority{" +
             "name='" + name + '\'' +
             "}";
-    }
-
-    @Override
-    public String getId() {
-        return name;
-    }
-
-    @Override
-    public boolean isNew() {
-        return true;
     }
 }

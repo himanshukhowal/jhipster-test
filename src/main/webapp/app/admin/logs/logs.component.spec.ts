@@ -5,7 +5,6 @@ import { of } from 'rxjs';
 import LogsComponent from './logs.component';
 import { LogsService } from './logs.service';
 import { Log, LoggersResponse } from './log.model';
-import { GatewayRoutesService } from '../gateway/gateway-routes.service';
 
 describe('LogsComponent', () => {
   let comp: LogsComponent;
@@ -15,7 +14,7 @@ describe('LogsComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, LogsComponent],
-      providers: [LogsService, GatewayRoutesService],
+      providers: [LogsService],
     })
       .overrideTemplate(LogsComponent, '')
       .compileComponents();

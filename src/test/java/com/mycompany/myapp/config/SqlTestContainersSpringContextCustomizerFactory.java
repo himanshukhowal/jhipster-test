@@ -26,7 +26,10 @@ public class SqlTestContainersSpringContextCustomizerFactory implements ContextC
             ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
             TestPropertyValues testValues = TestPropertyValues.empty();
             EmbeddedSQL sqlAnnotation = AnnotatedElementUtils.findMergedAnnotation(testClass, EmbeddedSQL.class);
-            if (null != sqlAnnotation) {
+            boolean usingTestProdProfile = Arrays
+                .asList(context.getEnvironment().getActiveProfiles())
+                .contains("test" + JHipsterConstants.SPRING_PROFILE_PRODUCTION);
+            if (null != sqlAnnotation && usingTestProdProfile) {
                 log.debug("detected the EmbeddedSQL annotation on class {}", testClass.getName());
                 log.info("Warming up the sql database");
                 if (null == prodTestContainer) {
@@ -43,18 +46,12 @@ public class SqlTestContainersSpringContextCustomizerFactory implements ContextC
                 }
                 testValues =
                     testValues.and(
-                        "spring.r2dbc.url=" +
-                        prodTestContainer.getTestContainer().getJdbcUrl().replace("jdbc", "r2dbc") +
-                        "?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true"
-                    );
-                testValues = testValues.and("spring.r2dbc.username=" + prodTestContainer.getTestContainer().getUsername());
-                testValues = testValues.and("spring.r2dbc.password=" + prodTestContainer.getTestContainer().getPassword());
-                testValues =
-                    testValues.and(
-                        "spring.liquibase.url=" +
+                        "spring.datasource.url=" +
                         prodTestContainer.getTestContainer().getJdbcUrl() +
                         "?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true"
                     );
+                testValues = testValues.and("spring.datasource.username=" + prodTestContainer.getTestContainer().getUsername());
+                testValues = testValues.and("spring.datasource.password=" + prodTestContainer.getTestContainer().getPassword());
             }
             testValues.applyTo(context);
         };

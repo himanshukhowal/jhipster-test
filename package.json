@@ -26,8 +26,6 @@
     "ci:e2e:teardown:docker": "docker compose -f src/main/docker/services.yml down -v && docker ps -a",
     "ci:frontend:build": "npm run webapp:build:$npm_package_config_default_environment",
     "ci:frontend:test": "npm run ci:frontend:build && npm test",
-    "ci:server:await": "echo \"Waiting for services to start\" && npm run ci:server:await:jhipstersampleapplication && echo \"Services started\"",
-    "ci:server:await:jhipstersampleapplication": "wait-on -t 180000 http-get://localhost:$npm_package_config_backend_port/management/health",
     "clean-www": "rimraf target/classes/static/app/{src,target/}",
     "cleanup": "rimraf target/classes/static/",
     "docker:db:down": "docker compose -f src/main/docker/mysql.yml down -v",
